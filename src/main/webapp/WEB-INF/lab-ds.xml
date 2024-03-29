@@ -1,0 +1,10 @@
+<datasources>
+    <datasource jndi-name="LabDataSource" pool-name="LabDataSource">
+        <driver>h2</driver>
+        <connection-url>jdbc:h2:~/h2database/LabDB;AUTO_SERVER=TRUE</connection-url>
+        <security>
+            <user-name>admin</user-name>
+            <password>cisco</password>
+        </security>
+    </datasource>
+</datasources>
