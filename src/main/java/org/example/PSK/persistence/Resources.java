@@ -5,10 +5,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.SynchronizationType;
+import javax.persistence.*;
 
 @ApplicationScoped
 public class Resources {
@@ -19,10 +16,11 @@ public class Resources {
     @Produces
     @Default
     @RequestScoped
-    private EntityManager createJTAEntityManager(){
+    private EntityManager createJTAEntityManager() {
         return emf.createEntityManager(SynchronizationType.SYNCHRONIZED);
     }
-    private void closeDefaultEntityManager(@Disposes @Default EntityManager em){
+
+    private void closeDefaultEntityManager(@Disposes @Default EntityManager em) {
         em.close();
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="org.example.PSK.mybatis.model.Driver" alias="Driver"/>
+        <typeAlias type="org.example.PSK.mybatis.model.Vehicle" alias="Player"/>
+        <typeAlias type="org.example.PSK.mybatis.model.Fare" alias="Fare"/>
+        <typeAlias type="org.example.PSK.mybatis.model.DriverVehicle" alias="Driver_Vehicle"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="MANAGED"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="LabDataSource"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis/DriverMapper.xml"/>
+        <mapper resource="mybatis/VehicleMapper.xml"/>
+        <mapper resource="mybatis/FareMapper.xml"/>
+        <mapper resource="mybatis/DriverVehicleMapper.xml"/>
+    </mappers>
+</configuration>

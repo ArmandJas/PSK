@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Driver #{driverInfoControllerMyBatis.selectedDriver.name}</title>
+</h:head>
+<h:body>
+    <h1>Orders and Vehicle IDs</h1>
+    <div style="display: flex;">
+        <!-- Left Column for Orders -->
+        <div style="flex: 1; padding-right: 20px;">
+            <h2>Orders</h2>
+            <ol>
+                <ui:repeat value="#{driverInfoControllerMyBatis.driverFares}" var="order">
+                    <li>
+                        <strong>Start Location:</strong> #{order.startlocation}<br />
+                        <strong>End Location:</strong> #{order.endlocation}<br />
+                        <strong>Timestamp:</strong> #{order.ordertimestamp}<br />
+                    </li>
+                </ui:repeat>
+            </ol>
+        </div>
+
+        <!-- Right Column for Vehicle IDs -->
+        <div style="flex: 1;">
+            <h2>Vehicles</h2>
+            <h2>Add Vehicle</h2>
+            <h:form>
+                <h:inputText value ="#{driverInfoControllerMyBatis.vehicleToAdd.vin}" required="true" /> VIN <br />
+                <h:inputText value ="#{driverInfoControllerMyBatis.vehicleToAdd.mileage}" required="true" /> Mileage <br />
+                <h:inputText value ="#{driverInfoControllerMyBatis.vehicleToAdd.status}" required="true" /> Status <br />
+                <h:commandButton value="Add Vehicle"
+                                 actionListener="#{driverInfoControllerMyBatis.addVehicle}"
+                                 action="#{'drivers?faces-redirect=true&amp;PID='.concat(driverInfoControllerMyBatis.selectedDriver.pid)}" />
+            </h:form>
+            <ol>
+                <ui:repeat value="#{driverInfoControllerMyBatis.driverVehicles}" var="vehicle">
+                    <li>
+                        <strong>VIN:</strong> #{vehicle.vin}<br />
+                        <strong>Mileage:</strong> #{vehicle.mileage}<br />
+                        <strong>Status:</strong> #{vehicle.status}<br />
+                    </li>
+                </ui:repeat>
+            </ol>
+        </div>
+    </div>
+</h:body>
+</html>
