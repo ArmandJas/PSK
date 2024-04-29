@@ -12,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.io.Serializable;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Model
-@RequestScoped
+@ViewScoped
 public class DriverInfoController implements Serializable {
     @Inject
     DriversDAO driversDAO;
