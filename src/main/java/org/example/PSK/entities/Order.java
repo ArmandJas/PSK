@@ -20,6 +20,7 @@ public class Order {
     }
 
     @Basic(optional = false)
+    //@Column(name="")
     private Timestamp orderTimestamp;
 
     public Timestamp getOrderTimestamp() {

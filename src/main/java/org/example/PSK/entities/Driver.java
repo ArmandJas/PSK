@@ -3,12 +3,15 @@ package org.example.PSK.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Decorated;
 import javax.persistence.*;
 
 import java.util.Collection;
 import java.util.List;
 
 @Entity
+@ApplicationScoped
 public class Driver {
     @Basic(optional = false)
     private String name;

@@ -30,13 +30,14 @@
         <div style="flex: 1;">
             <h2>Vehicles</h2>
             <h2>Add Vehicle</h2>
+            <h2 style="color:red; display:#{driverInfoController.errorDisplay}">Error, VIN already exists</h2>
             <h:form>
                 <h:inputText value ="#{driverInfoController.vehicleToAdd.VIN}" required="true" /> VIN <br />
                 <h:inputText value ="#{driverInfoController.vehicleToAdd.mileage}" required="true" /> Mileage <br />
                 <h:inputText value ="#{driverInfoController.vehicleToAdd.status}" required="true" /> Status <br />
                 <h:commandButton value="Add Vehicle"
                                  actionListener="#{driverInfoController.addVehicle}"
-                                 action="#{'drivers?faces-redirect=true&amp;PID='.concat(driverInfoController.selectedDriver.PID)}" />
+                                 action="#{'drivers?faces-redirect=true&amp;PID='.concat(driverInfoController.selectedDriver.PID).concat('&amp;ERROR='.concat(driverInfoController.errorDisplay))}"/>
             </h:form>
             <ol>
                 <ui:repeat value="#{driverInfoController.driverVehicles}" var="vehicle">
@@ -44,6 +45,7 @@
                         <strong>VIN:</strong> #{vehicle.VIN}<br />
                         <strong>Mileage:</strong> #{vehicle.mileage}<br />
                         <strong>Status:</strong> #{vehicle.status}<br />
+                        <h:link value="Edit" outcome="vehicles?VIN=#{vehicle.VIN}" />
                     </li>
                 </ui:repeat>
             </ol>

@@ -4,4 +4,13 @@
        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd"
        bean-discovery-mode="annotated">
 
+    <interceptors>
+        <class>org.example.PSK.middleware.LogInterceptor</class>
+    </interceptors>
+    <decorators>
+        <class>org.example.PSK.middleware.NegativeMileageDecorator</class>
+    </decorators>
+    <alternatives>
+        <!--<class>org.example.PSK.services.FastVehicleMileageFetcher</class>-->
+    </alternatives>
 </beans>

@@ -13,6 +13,10 @@ public class Vehicle {
     @Id
     private String VIN;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
     public String getVIN() {
         return VIN;
     }
